@@ -1,0 +1,18 @@
+name: Deploy to Heroku
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.8.9 # This is the action
+        with:
+          heroku_api_key: "37e18df1-92ce-410f-9b72-65d9d436af9a"  # Defined in the repository Settings > Secrets
+          heroku_email: "amalesh_gs@yahoo.co.in"
+          heroku_app_name: "speedwaytrails" #Must be unique in Heroku
+          usedocker: true
