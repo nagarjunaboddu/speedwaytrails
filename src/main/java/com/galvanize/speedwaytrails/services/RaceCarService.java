@@ -3,6 +3,7 @@ package com.galvanize.speedwaytrails.services;
 import com.galvanize.speedwaytrails.models.RaceCar;
 import com.galvanize.speedwaytrails.models.SpeedwayResponse;
 import com.galvanize.speedwaytrails.repositories.RaceCarRepository;
+import com.galvanize.speedwaytrails.exception.RaceCarException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class RaceCarService {
         this.raceCarRepository = raceCarRepository;
     }
 
-    public SpeedwayResponse listAllRaceCars() {
+    public SpeedwayResponse listAllRaceCars() throws RaceCarException {
         List<RaceCar> cars = raceCarRepository.findAll();
         SpeedwayResponse response=null;
         if (cars != null) {
@@ -25,6 +26,8 @@ public class RaceCarService {
                     .status_code(200)
                     .data(cars)
                     .build();
+        }else{
+            throw new RaceCarException("No Cars found in Garage");
         }
         return response;
     }
