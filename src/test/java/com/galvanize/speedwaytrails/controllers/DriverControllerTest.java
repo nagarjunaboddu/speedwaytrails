@@ -1,5 +1,6 @@
 package com.galvanize.speedwaytrails.controllers;
 
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -12,19 +13,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class RaceControllerTest {
+public class DriverControllerTest {
 
     @Autowired
     MockMvc mockMvc;
 
+
     @Test
-    public void listAllRaceCars() throws Exception {
-
-        mockMvc.perform(get("/api/v1/racecars"))
+    public void getAllDrivers() throws Exception {
+        mockMvc.perform(get("/api/v1/drivers"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.length()").value(2));
-
+                .andExpect(jsonPath("$.length()").value(1));
     }
-
-
 }
