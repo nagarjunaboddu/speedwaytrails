@@ -39,7 +39,7 @@ public class RaceCar {
 
     @ManyToOne(fetch= FetchType.EAGER)
     @JsonBackReference
-    @JoinColumn(name="owner_id",nullable = false)
+    @JoinColumn(name="owner_id",nullable = true)
     private Owner owner;
 
 }

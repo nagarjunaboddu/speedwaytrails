@@ -18,7 +18,7 @@ public class RaceCarExceptionHandler {
         List<String> errors = new ArrayList<>(1);
         errors.add(ex.getMessage());
             response = SpeedwayResponse.builder()
-                    .status("Bad request.")
+                    .status_text("Bad request.")
                     .status_code(400)
                     .data(errors)
                     .build();

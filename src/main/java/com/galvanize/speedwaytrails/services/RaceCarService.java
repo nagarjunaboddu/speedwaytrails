@@ -1,5 +1,6 @@
 package com.galvanize.speedwaytrails.services;
 
+import com.galvanize.speedwaytrails.models.Owner;
 import com.galvanize.speedwaytrails.models.RaceCar;
 import com.galvanize.speedwaytrails.models.SpeedwayResponse;
 import com.galvanize.speedwaytrails.repositories.RaceCarRepository;
@@ -22,7 +23,7 @@ public class RaceCarService {
         SpeedwayResponse response=null;
         if (cars != null) {
             response = SpeedwayResponse.builder()
-                    .status("OK")
+                    .status_text("OK")
                     .status_code(200)
                     .data(cars)
                     .build();
@@ -30,5 +31,14 @@ public class RaceCarService {
             throw new RaceCarException("No Cars found in Garage");
         }
         return response;
+    }
+
+    public SpeedwayResponse addNewRaceCar(RaceCar raceCarReq) {
+        RaceCar response = raceCarRepository.save(raceCarReq);
+        SpeedwayResponse speedwayResponse = new SpeedwayResponse();
+        speedwayResponse.setStatus_text("Car Successfully Added");
+        speedwayResponse.setStatus_code(201);
+        speedwayResponse.setData(response);
+        return speedwayResponse;
     }
 }

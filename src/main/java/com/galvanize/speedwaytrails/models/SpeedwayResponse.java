@@ -13,7 +13,7 @@ import java.util.List;
 @Builder
 public class SpeedwayResponse {
 
-    private String status;
+    private String status_text;
     private int status_code;
     private Object data;
 

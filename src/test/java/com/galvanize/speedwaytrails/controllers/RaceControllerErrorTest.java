@@ -28,7 +28,7 @@ public class RaceControllerErrorTest {
         when(raceCarRepository.findAll()).thenReturn(null);
         mockMvc.perform(get("/api/v1/racecars"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.status").value("Bad request."))
+                .andExpect(jsonPath("$.status_text").value("Bad request."))
                 .andExpect(jsonPath("$.status_code").value(400))
                 .andExpect(jsonPath("$.data.[0]").value("No Cars found in Garage"))
         ;
