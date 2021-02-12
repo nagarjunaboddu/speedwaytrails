@@ -21,14 +21,14 @@ public class RaceCarService {
     public SpeedwayResponse listAllRaceCars() throws RaceCarException {
         List<RaceCar> cars = raceCarRepository.findAll();
         SpeedwayResponse response=null;
-        if (cars != null) {
+        if (cars == null || cars.isEmpty()) {
+            throw new RaceCarException("No Cars found in Garage");
+        }else{
             response = SpeedwayResponse.builder()
                     .status_text("OK")
                     .status_code(200)
                     .data(cars)
                     .build();
-        }else{
-            throw new RaceCarException("No Cars found in Garage");
         }
         return response;
     }
