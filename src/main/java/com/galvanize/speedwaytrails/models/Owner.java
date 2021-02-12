@@ -37,8 +37,7 @@ public class Owner {
     @Column(name = "losses")
     private int losses;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "owner",fetch=FetchType.EAGER)
     @Singular //to return empty list when null
     private List<RaceCar> cars;
 

@@ -29,7 +29,6 @@ public class RaceControllerTest {
                 .andExpect(jsonPath("$.data.[1].nickname").value("Blue Fire"))
                 .andExpect(jsonPath("$.data.[2].nickname").value("Red Fire"))
 
-
         ;
 
     }

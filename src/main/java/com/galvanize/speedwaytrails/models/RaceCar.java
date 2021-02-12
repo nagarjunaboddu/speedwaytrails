@@ -37,7 +37,7 @@ public class RaceCar {
     @Column(name = "topSpeed")
     private int topSpeed;
 
-    @ManyToOne(fetch= FetchType.LAZY)
+    @ManyToOne(fetch= FetchType.EAGER)
     @JsonBackReference
     @JoinColumn(name="owner_id",nullable = false)
     private Owner owner;
